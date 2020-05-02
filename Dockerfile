@@ -30,10 +30,6 @@ ENV TF2_DIR=${GMOD_SHAREDCONTENT_DIR}
 USER steam
 WORKDIR ${GMOD_DIR}
 
-## UPDATE
-RUN apt-get update
-RUN apt-get upgrade -y
-
 ## INSTALLATION
 RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${GMOD_DIR} +app_update ${GMOD_ID} validate +quit
 RUN ${STEAMCMDDIR}/steamcmd.sh +login anonymous +force_install_dir ${CSS_DIR} +app_update ${CSS_ID} validate +quit
