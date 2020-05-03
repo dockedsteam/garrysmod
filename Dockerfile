@@ -27,7 +27,11 @@ ENV TF2_DIR=${GMOD_SHAREDCONTENT_DIR}
 
 # SETUP
 WORKDIR ${GMOD_DIR}
-COPY entrypoint.sh entrypoint.sh
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends --no-install-suggests \
+	wget=1.20.1-1.1 
+RUN wget https://raw.githubusercontent.com/dockedsteam/garrysmod/master/entrypoint.sh
+RUN chmod 755 ${GMOD_DIR}/entrypoint.sh
 RUN chown -R steam:steam ${GMOD_DIR}
 USER steam
 
