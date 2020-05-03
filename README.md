@@ -35,4 +35,4 @@ There are several environment variables present for configuring the server.  For
 
 If not already done, mount the game directory using `-v /path/on/machine:/home/steam/gmod` when running the image.
 You can now adjust the server.cfg configuration located in the `<Garry's Mod path on machine>/garrysmod/cfg/` folder.
-You might also want to directly bind yout server configuration.
+You might also want to directly bind your server configuration.
