@@ -26,15 +26,17 @@ ENV TF2_ID=232250
 ENV TF2_DIR=${GMOD_SHAREDCONTENT_DIR}
 
 # SETUP
-WORKDIR ${GMOD_DIR}
+
+RUN mkdir /opt/script
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends --no-install-suggests \
 	wget=1.20.1-1.1 
-RUN wget https://raw.githubusercontent.com/dockedsteam/garrysmod/master/entrypoint.sh
-RUN chmod 755 ${GMOD_DIR}/entrypoint.sh
-RUN chown -R steam:steam ${GMOD_DIR}
+RUN wget -P /opt/script https://raw.githubusercontent.com/dockedsteam/garrysmod/master/entrypoint.sh
+RUN chmod 755 /opt/script/entrypoint.sh
+RUN chown -R steam:steam /opt/script
+WORKDIR ${GMOD_DIR}
 USER steam
 
-ENTRYPOINT /bin/bash ${GMOD_DIR}/entrypoint.sh
+ENTRYPOINT /bin/bash /opt/script/entrypoint.sh
 
 EXPOSE ${PORT}/udp
