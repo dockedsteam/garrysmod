@@ -35,6 +35,6 @@ RUN chmod 755 ${GMOD_DIR}/entrypoint.sh
 RUN chown -R steam:steam ${GMOD_DIR}
 USER steam
 
-ENTRYPOINT [ "/bin/bash", "./entrypoint.sh" ]
+ENTRYPOINT /bin/bash ${GMOD_DIR}/entrypoint.sh
 
 EXPOSE ${PORT}/udp
